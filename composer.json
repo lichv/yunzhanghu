@@ -1,0 +1,22 @@
+{
+    "name": "lichv/yunzhanghu",
+    "description": "yunzhanghu service",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lichv",
+            "email": "lichvg@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "extra":{
+	    "branch-alias":{
+	        "dev-master":"1.0.x-dev" 
+	    } 
+	},
+    "autoload": {
+        "psr-4": {
+            "Lichv\\Yunzhanghu\\":"src/"
+        }
+    }
+}
