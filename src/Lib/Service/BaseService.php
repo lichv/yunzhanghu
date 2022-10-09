@@ -2,6 +2,9 @@
 
 namespace Lichv\Yunzhanghu\Lib\Service;
 
+use Lichv\Yunzhanghu\Lib\Base;
+use Lichv\Yunzhanghu\Lib\Config;
+use Lichv\Yunzhanghu\Lib\HttpRequest;
 use Lichv\Yunzhanghu\Lib\Util\RSAUtil;
 use Lichv\Yunzhanghu\Lib\Service\Des3Service;
 

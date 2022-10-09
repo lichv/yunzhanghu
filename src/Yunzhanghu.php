@@ -2,6 +2,7 @@
 namespace Lichv\Yunzhanghu;
 
 use Lichv\Yunzhanghu\Lib\Base;
+use Lichv\Yunzhanghu\Lib\Config;
 use Lichv\Yunzhanghu\Lib\Service\BaseService;
 
 class Yunzhanghu
@@ -22,19 +23,19 @@ class Yunzhanghu
     {
     	if (empty($config)) {
     		$config = [
-                'dealer_id'=>env('YUNZHANGHU_DEALER',''),
-                'broker_id'=>env('YUNZHANGHU_BROKER',''),
-                'des3_key'=>env('YUNZHANGHU_DES3KEY',''),
-                'app_key'=>env('YUNZHANGHU_APPKEY',''),
-                'private_key'=>env('YUNZHANGHU_PRIVATEKEY',''),
-                'public_key'=>env('YUNZHANGHU_PUBLICKEY',''),
+                'dealer_id'=>'',
+                'broker_id'=>'',
+                'des3_key'=>'',
+                'app_key'=>'',
+                'private_key'=>'',
+                'public_key'=>'',
             ];
     	}
     	$this->setConfig($config);
 
     }
 
-    public function setConfig($config){
+    public function setConfig(array $config){
         if (!empty($config['private_key']) && strpos($config['private_key'],'-----BEGIN RSA PRIVATE KEY-----')===false) {
             $config['private_key'] = $this->getPrivateKey($config['private_key']);
         }
@@ -45,13 +46,13 @@ class Yunzhanghu
     	return $this;
     }
 
-    public function submit($route string, $params array, $method="post"){
+    public function submit(string $route, array $params, string $method="post" ){
         $base = new Base($route, $method);
         foreach ($params as $key => $value) {
             $base->addParam($key, $value);  
         }
 
-        $Goverify = new BaseService($this->config, $base);
+        $Goverify = new BaseService(new Config($this->config), $base);
         $fourVerifyRequest = $Goverify->request();
         return $fourVerifyRequest;
     }

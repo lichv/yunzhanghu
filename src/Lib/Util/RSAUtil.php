@@ -1,5 +1,8 @@
 <?php
 namespace Lichv\Yunzhanghu\Lib\Util;
+
+use Lichv\Yunzhanghu\Lib\Config;
+
 class RsaUtil
 {
     /**

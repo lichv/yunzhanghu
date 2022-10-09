@@ -1,5 +1,7 @@
 <?php
 namespace Lichv\Yunzhanghu\Lib;
+
+use Lichv\Yunzhanghu\Lib\Util\StringUtil;
 class Config
 {
     /**
@@ -43,4 +45,30 @@ class Config
      * @var string
      */
     public $app_key    = '';
+
+    /**
+     * 构造函数
+     * 初始化router和method
+     */
+    public function __construct(array $array)
+    {
+        $this->dealer_id = $array['dealer_id']??'';
+        $this->broker_id = $array['broker_id']??'';
+        $this->app_key = $array['app_key']??'';
+        $this->des3_key = $array['des3_key']??'';
+        $this->private_key = $array['private_key']??'';
+        $this->public_key = $array['public_key']??'';
+        $this->mess       = StringUtil::round(16);
+        $this->timestamp  = time();
+        $this->request_id = StringUtil::round(16);
+    }
+
+    public function __set($name, $value){
+        $this->$name = $value;
+
+    }
+    
+    public function __get($name){
+        return $this->$name;
+    }
 }
