@@ -1,6 +1,10 @@
 {
     "name": "lichv/yunzhanghu",
     "description": "yunzhanghu service",
+    "type": "library",
+    "require": {
+        "php": ">=7.0"
+    },
     "license": "MIT",
     "authors": [
         {
@@ -9,11 +13,6 @@
         }
     ],
     "minimum-stability": "stable",
-    "extra":{
-	    "branch-alias":{
-	        "dev-master":"1.0.x-dev" 
-	    } 
-	},
     "autoload": {
         "psr-4": {
             "Lichv\\Yunzhanghu\\":"src/"
